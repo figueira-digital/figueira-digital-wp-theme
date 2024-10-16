@@ -2,14 +2,7 @@
 
 A modern, responsive WordPress theme with a dynamic background effect and clean design.
 
-## Features
-
-- Dynamic, interactive background using Three.js
-- Responsive design that works on desktop and mobile devices
-- Custom header with logo and navigation menu
-- Customizable footer content
-- Support for blog posts and pages
-- Clean and minimalist design focused on content
+![Figueira Digital Theme Preview](images/theme-preview.png)
 
 ## Requirements
 
