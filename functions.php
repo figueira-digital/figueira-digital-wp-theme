@@ -36,3 +36,22 @@ function create_footer_page() {
     }
 }
 add_action('after_switch_theme', 'create_footer_page');
+
+function create_cookie_banner_page() {
+    if (!get_page_by_path('cookie-banner-content')) {
+        wp_insert_post(array(
+            'post_title'    => 'Cookie Banner Content',
+            'post_content'  => 'We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.',
+            'post_status'   => 'publish',
+            'post_author'   => 1,
+            'post_type'     => 'page',
+            'post_name'     => 'cookie-banner-content'
+        ));
+    }
+}
+add_action('after_switch_theme', 'create_cookie_banner_page');
+
+function enqueue_cookie_banner_script() {
+    wp_enqueue_script('cookie-banner', get_template_directory_uri() . '/js/cookie-banner.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_cookie_banner_script');

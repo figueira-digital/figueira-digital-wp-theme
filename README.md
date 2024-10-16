@@ -1,6 +1,6 @@
 # Figueira Digital WordPress Theme
 
-A modern, responsive WordPress theme with a dynamic background effect and clean design.
+A modern, responsive WordPress theme with a dynamic background effect, clean design, and a customizable cookie banner.
 
 ![Figueira Digital Theme Preview](images/theme-preview.png)
 
@@ -30,10 +30,22 @@ A modern, responsive WordPress theme with a dynamic background effect and clean 
 - Add your desired footer content to this page.
 - The content of this page will automatically appear in the site footer.
 
+### Cookie Banner
+
+The theme includes a customizable cookie banner that appears at the bottom of the page for new visitors.
+
+To customize the cookie banner content:
+
+1. In the WordPress admin panel, go to Pages.
+2. Find the page titled "Cookie Banner Content".
+3. Edit this page to change the text of the cookie banner.
+4. Update the page to save your changes.
+
+The cookie banner will automatically appear for users who haven't accepted cookies. Once a user clicks the "Accept" button, the banner will not appear again for 365 days.
+
 ### Background Effect
 
 The dynamic background effect is powered by Three.js. You can customize its appearance by modifying the `background.js` file in the `js` folder.
-
 
 ## Customization
 

@@ -1,3 +1,4 @@
+/* Reset some default styles */
 * {
     font-family: monospace;
     box-sizing: border-box;
@@ -12,10 +13,12 @@ body {
     flex-direction: column;
 }
 
+/* Veil effect */
 #veil {
     display: none;
 }
 
+/* Ensure other elements are above the veil */
 #masthead, .site-branding, .site-content {
     position: relative;
     z-index: 10;
@@ -35,9 +38,10 @@ body {
     flex-grow: 1;
     display: flex;
     align-items: center;
-    padding: 60px 5% 0;
+    padding: 60px 5% 0; /* Adjusted top padding to account for fixed header */
 }
 
+/* Updated navigation and branding styling */
 #masthead {
     position: fixed;
     top: 0;
@@ -105,9 +109,10 @@ body {
 }
 
 .site-description {
-    display: none;
+    display: none; /* Hide the site description as it doesn't fit in the navbar */
 }
 
+/* Content styling */
 #content, .entry-content {
     color: #fff;
     padding: 1%;
@@ -117,6 +122,7 @@ body {
     margin-bottom: 10%;
 }
 
+/* Entry content specific styling */
 .entry-content h1, .entry-content h2, .entry-content h3,
 .entry-content h4, .entry-content h5, .entry-content h6 {
     color: #fff;
@@ -150,6 +156,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Footer styling */
 .site-footer {
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
@@ -178,6 +185,7 @@ body {
     margin: 0;
 }
 
+/* Media query for smaller screens */
 @media (max-width: 768px) {
     .brand-wrapper {
         font-size: 150%;
@@ -192,6 +200,7 @@ body {
     }
 }
 
+/* Blog post title styles */
 .entry-title {
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -214,3 +223,53 @@ body {
     margin-bottom: 20px;
 }
 
+
+#cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 9999;
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-banner-content {
+    margin-bottom: 15px;
+}
+
+#accept-cookies {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+#accept-cookies:hover {
+    background-color: #45a049;
+}
+
+body.cookie-banner-visible::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
