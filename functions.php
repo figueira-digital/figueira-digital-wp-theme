@@ -13,8 +13,8 @@ add_action('wp_enqueue_scripts', 'figueira_digital_scripts');
 
 function get_page_type() {
     if (is_front_page()) return 'landing';
-    if (is_page('agency')) return 'agency';
-    if (is_page('academy')) return 'academy';
+    // if (is_page('agency')) return 'agency';
+    // if (is_page('academy')) return 'academy';
     return 'default';
 }
 
