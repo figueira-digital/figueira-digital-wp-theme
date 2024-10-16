@@ -1,0 +1,18 @@
+<?php
+
+get_header(); ?>
+
+<main id="primary" class="site-main">
+    <div id="container">
+        <div id="content">
+            <?php
+            while ( have_posts() ) :
+                the_post();
+                the_content();
+            endwhile;
+            ?>
+        </div>
+    </div>
+</main>
+
+<?php get_footer(); ?>
