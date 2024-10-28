@@ -1,24 +1,26 @@
-/* css/scroll-snap.css */
+/* Add this as css/scroll-snap.css in your theme directory */
 
-/* Container adjustments */
+/* Style for pages with scroll snap sections */
 .has-scroll-snap #container {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     padding: 0;
-    scroll-padding-top: 60px; /* Add scroll padding to account for fixed header */
+    /* Remove any margin/padding that might affect positioning */
+    margin: 0;
 }
 
 .has-scroll-snap #content {
     margin: 0;
     max-width: none;
     padding: 0;
-    padding-top: 60px; /* Add padding to push first section below header */
+    /* Offset for fixed header */
+    padding-top: 60px; /* Height of your header */
 }
 
 /* Style for full height sections */
 .has-scroll-snap .is-style-full-height-section {
-    min-height: 100vh; /* Changed from height to min-height for better content handling */
+    min-height: 100vh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     display: flex;
@@ -26,7 +28,17 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 20px 5%; /* Removed top padding since we handle it in the container */
+    /* Remove top padding and use padding-left/right only */
+    padding: 0 5%;
+    /* Account for header height */
+    box-sizing: border-box;
+}
+
+/* First section specific styling */
+.has-scroll-snap .is-style-full-height-section:first-child {
+    /* Adjust for header height */
+    min-height: calc(100vh - 60px); /* Subtract header height */
+    margin-top: 60px; /* Add margin equal to header height */
 }
 
 /* Ensure content within sections is properly centered and padded */
@@ -47,16 +59,12 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .has-scroll-snap #container {
-        scroll-padding-top: 80px; /* Increased scroll padding for mobile */
+    .has-scroll-snap #content {
+        padding-top: 80px; /* Adjust for taller mobile header if needed */
     }
     
-    .has-scroll-snap #content {
-        padding-top: 80px; /* Increased padding for mobile */
+    .has-scroll-snap .is-style-full-height-section:first-child {
+        min-height: calc(100vh - 80px);
+        margin-top: 80px;
     }
-}
-
-/* Optional: Add smooth scrolling for a nicer experience */
-.has-scroll-snap {
-    scroll-behavior: smooth;
 }
