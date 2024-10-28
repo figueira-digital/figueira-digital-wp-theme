@@ -1,12 +1,4 @@
-/* Reset basic elements */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
-
-/* Main container setup */
+/* Basic setup for pages with scroll snap */
 .has-scroll-snap {
     height: 100vh;
     overflow: hidden;
@@ -17,43 +9,38 @@ html, body {
     overflow: hidden;
 }
 
-/* Header positioning */
-.has-scroll-snap #masthead {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
-
 /* Main content area */
 .has-scroll-snap .site-main {
     height: 100vh;
-    padding-top: 60px; /* Header height */
     box-sizing: border-box;
 }
 
-/* Scroll snap container */
+/* Scroll container */
 .has-scroll-snap #snap-container {
-    height: 100%;
+    height: 100vh;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
-    position: relative;
+    padding-top: 60px; /* Header height */
 }
 
-/* Section styling */
-.has-scroll-snap .is-style-full-height-section {
-    height: 100vh;
+/* Regular group blocks behavior */
+.has-scroll-snap .wp-block-group {
+    padding: 20px 5%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Full height section styling */
+.has-scroll-snap .wp-block-group.is-style-full-height-section {
+    min-height: 100vh;
     scroll-snap-align: start;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
     padding: 0 5%;
-    box-sizing: border-box;
+    margin: 0;
 }
 
-/* Section content container */
+/* Content container for full height sections */
 .has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
     max-width: 1200px;
     width: 100%;
@@ -61,7 +48,24 @@ html, body {
     padding: 20px;
 }
 
-/* Footer adjustments */
+/* Regular group content container */
+.has-scroll-snap .wp-block-group > .wp-block-group__inner-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Fixed header */
+.has-scroll-snap #masthead {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Fixed footer */
 .has-scroll-snap .site-footer {
     position: fixed;
     bottom: 0;
@@ -70,7 +74,7 @@ html, body {
     z-index: 1000;
 }
 
-/* Hide scrollbars but maintain functionality */
+/* Hide scrollbars */
 .has-scroll-snap #snap-container::-webkit-scrollbar {
     display: none;
 }
@@ -80,7 +84,7 @@ html, body {
     scrollbar-width: none;
 }
 
-/* Background container */
+/* Fixed background */
 .has-scroll-snap #background-container {
     position: fixed;
     top: 0;
@@ -90,9 +94,9 @@ html, body {
     z-index: -1;
 }
 
-/* Responsive adjustments */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-    .has-scroll-snap .site-main {
+    .has-scroll-snap #snap-container {
         padding-top: 80px; /* Larger header height for mobile */
     }
 }
