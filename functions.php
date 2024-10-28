@@ -97,3 +97,25 @@ function enqueue_scroll_snap_styles() {
     );
 }
 add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_styles');
+
+(function() {
+    function initScrollSnap() {
+        // Force a small scroll on page load to trigger proper positioning
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+                const container = document.getElementById('container');
+                if (container) {
+                    container.scrollTo(0, 0);
+                }
+            }, 100);
+        });
+    }
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollSnap);
+    } else {
+        initScrollSnap();
+    }
+})();
