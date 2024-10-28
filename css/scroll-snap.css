@@ -96,8 +96,3 @@ html, body {
         padding-top: 80px; /* Larger header height for mobile */
     }
 }
-
-/* Debug styles - remove after fixing */
-.has-scroll-snap .is-style-full-height-section {
-    outline: 2px solid red;
-}
