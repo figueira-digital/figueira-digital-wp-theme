@@ -98,24 +98,16 @@ function enqueue_scroll_snap_styles() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_styles');
 
-(function() {
-    function initScrollSnap() {
-        // Force a small scroll on page load to trigger proper positioning
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                window.scrollTo(0, 0);
-                const container = document.getElementById('container');
-                if (container) {
-                    container.scrollTo(0, 0);
-                }
-            }, 100);
-        });
+// Add this to functions.php
+function enqueue_scroll_snap_script() {
+    if (is_page()) {
+        wp_enqueue_script(
+            'scroll-snap-script',
+            get_template_directory_uri() . '/js/scroll-snap.js',
+            array(),
+            '1.0.0',
+            true
+        );
     }
-
-    // Initialize on DOM ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initScrollSnap);
-    } else {
-        initScrollSnap();
-    }
-})();
+}
+add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_script');
