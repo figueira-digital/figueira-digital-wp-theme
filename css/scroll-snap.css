@@ -1,0 +1,51 @@
+/* Add this as css/scroll-snap.css in your theme directory */
+
+/* Style for pages with scroll snap sections */
+.has-scroll-snap #container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    padding: 0;
+}
+
+.has-scroll-snap #content {
+    margin: 0;
+    max-width: none;
+    padding: 0;
+}
+
+/* Style for full height sections */
+.has-scroll-snap .is-style-full-height-section {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 5% 5%; /* Account for fixed header */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ensure content within sections is properly centered and padded */
+.has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Adjust footer behavior for scroll snap pages */
+.has-scroll-snap .site-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .has-scroll-snap .is-style-full-height-section {
+        padding-top: 80px; /* Increased padding for mobile header */
+    }
+}

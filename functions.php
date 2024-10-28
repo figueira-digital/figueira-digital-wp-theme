@@ -55,3 +55,45 @@ function enqueue_cookie_banner_script() {
     wp_enqueue_script('cookie-banner', get_template_directory_uri() . '/js/cookie-banner.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_cookie_banner_script');
+
+function register_block_styles() {
+    register_block_style(
+        'core/group',
+        array(
+            'name'         => 'full-height-section',
+            'label'        => __('Full Height Section', 'figueira-digital'),
+        )
+    );
+}
+add_action('init', 'register_block_styles');
+
+// Add custom class to body when page uses scroll snap
+function add_scroll_snap_body_class($classes) {
+    if (is_page()) {
+        $post = get_post();
+        if (has_blocks($post->post_content)) {
+            $blocks = parse_blocks($post->post_content);
+            foreach ($blocks as $block) {
+                if ($block['blockName'] === 'core/group' && 
+                    isset($block['attrs']['className']) && 
+                    strpos($block['attrs']['className'], 'is-style-full-height-section') !== false) {
+                    $classes[] = 'has-scroll-snap';
+                    break;
+                }
+            }
+        }
+    }
+    return $classes;
+}
+add_filter('body_class', 'add_scroll_snap_body_class');
+
+// Enqueue styles for scroll snap
+function enqueue_scroll_snap_styles() {
+    wp_enqueue_style(
+        'scroll-snap-styles',
+        get_template_directory_uri() . '/css/scroll-snap.css',
+        array(),
+        '1.0.0'
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_styles');
