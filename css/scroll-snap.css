@@ -1,48 +1,23 @@
-/* Add this as css/scroll-snap.css in your theme directory */
+/* Reset basic elements */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
 
-/* Reset container styles */
+/* Main container setup */
+.has-scroll-snap {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .has-scroll-snap #page {
     height: 100vh;
-    overflow: hidden; /* Prevent double scrollbars */
+    overflow: hidden;
 }
 
-.has-scroll-snap #container {
-    height: 100vh;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    padding: 0;
-    margin: 0;
-}
-
-.has-scroll-snap #content {
-    margin: 0;
-    max-width: none;
-    padding: 0;
-    /* Remove padding-top as we'll handle spacing in sections */
-}
-
-/* Basic section styling */
-.has-scroll-snap .is-style-full-height-section {
-    min-height: 100vh;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    padding: 0 5%;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-/* Ensure content within sections is properly contained */
-.has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 80px 20px; /* Added more padding to ensure content is visible below header */
-}
-
-/* Adjust header behavior */
+/* Header positioning */
 .has-scroll-snap #masthead {
     position: fixed;
     top: 0;
@@ -51,7 +26,42 @@
     z-index: 1000;
 }
 
-/* Adjust footer behavior */
+/* Main content area */
+.has-scroll-snap .site-main {
+    height: 100vh;
+    padding-top: 60px; /* Header height */
+    box-sizing: border-box;
+}
+
+/* Scroll snap container */
+.has-scroll-snap #snap-container {
+    height: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    position: relative;
+}
+
+/* Section styling */
+.has-scroll-snap .is-style-full-height-section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+
+/* Section content container */
+.has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Footer adjustments */
 .has-scroll-snap .site-footer {
     position: fixed;
     bottom: 0;
@@ -60,17 +70,17 @@
     z-index: 1000;
 }
 
-/* Hide background container scrollbar */
-.has-scroll-snap #container::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+/* Hide scrollbars but maintain functionality */
+.has-scroll-snap #snap-container::-webkit-scrollbar {
+    display: none;
 }
 
-.has-scroll-snap #container {
-    -ms-overflow-style: none;  /* Internet Explorer and Edge */
-    scrollbar-width: none;  /* Firefox */
+.has-scroll-snap #snap-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Background container adjustments */
+/* Background container */
 .has-scroll-snap #background-container {
     position: fixed;
     top: 0;
@@ -82,12 +92,12 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
-        padding: 100px 20px; /* Increased padding for mobile */
+    .has-scroll-snap .site-main {
+        padding-top: 80px; /* Larger header height for mobile */
     }
 }
 
-/* Debug outline - remove after fixing */
+/* Debug styles - remove after fixing */
 .has-scroll-snap .is-style-full-height-section {
-    outline: 1px solid rgba(255, 0, 0, 0.2); /* Temporary outline to see section boundaries */
+    outline: 2px solid red;
 }

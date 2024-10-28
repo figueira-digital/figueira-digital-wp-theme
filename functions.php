@@ -111,3 +111,38 @@ function enqueue_scroll_snap_script() {
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_script');
+
+
+function modify_content_for_scroll_snap($content) {
+    if (is_page() && has_blocks($content)) {
+        $blocks = parse_blocks($content);
+        $has_full_height_section = false;
+        
+        foreach ($blocks as $block) {
+            if ($block['blockName'] === 'core/group' && 
+                isset($block['attrs']['className']) && 
+                strpos($block['attrs']['className'], 'is-style-full-height-section') !== false) {
+                $has_full_height_section = true;
+                break;
+            }
+        }
+        
+        if ($has_full_height_section) {
+            add_filter('body_class', function($classes) {
+                return array_merge($classes, array('has-scroll-snap'));
+            });
+        }
+    }
+    return $content;
+}
+add_filter('the_content', 'modify_content_for_scroll_snap', 1);
+
+// Ensure proper script loading order
+function adjust_script_priority() {
+    // Remove existing script
+    remove_action('wp_enqueue_scripts', 'figueira_digital_scripts');
+    
+    // Re-add with later priority
+    add_action('wp_enqueue_scripts', 'figueira_digital_scripts', 20);
+}
+add_action('init', 'adjust_script_priority');
