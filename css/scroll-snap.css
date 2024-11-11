@@ -19,8 +19,8 @@
 .has-scroll-snap #snap-container {
     height: 100vh;
     overflow-y: auto;
-    scroll-snap-type: y proximity;
-    padding-top: 40px; /* Header height */
+    scroll-snap-type: y mandatory;
+    padding-top: 60px; /* Header height */
 }
 
 /* Regular group blocks behavior */
@@ -49,6 +49,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 20px;
+    /* Remove any fixed height constraints */
     min-height: 0;
 }
 
@@ -78,7 +79,7 @@
     z-index: 1000;
 }
 
-/* Hide scrollbars */
+/* Hide scrollbars for webkit browsers */
 .has-scroll-snap #snap-container::-webkit-scrollbar {
     display: none;
 }
@@ -98,9 +99,18 @@
     z-index: -1;
 }
 
+/* Add padding for better visibility near the footer */
+.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
+    padding-bottom: calc(5% + 40px); /* Additional padding to account for footer */
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .has-scroll-snap #snap-container {
         padding-top: 80px; /* Larger header height for mobile */
+    }
+    
+    .has-scroll-snap .wp-block-group.is-style-full-height-section {
+        padding: 80px 5% 5% 5%; /* Additional top padding for mobile */
     }
 }
