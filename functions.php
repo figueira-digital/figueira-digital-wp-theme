@@ -8,21 +8,13 @@ function figueira_digital_scripts() {
     wp_localize_script('background', 'pageInfo', array(
         'type' => $page_type
     ));
-
-    // Enqueue scroll snap styles if needed
-    if (is_page()) {
-        wp_enqueue_style(
-            'scroll-snap-styles',
-            get_template_directory_uri() . '/css/scroll-snap.css',
-            array(),
-            '1.0.0'
-        );
-    }
 }
 add_action('wp_enqueue_scripts', 'figueira_digital_scripts');
 
 function get_page_type() {
     if (is_front_page()) return 'landing';
+    // if (is_page('agency')) return 'agency';
+    // if (is_page('academy')) return 'academy';
     return 'default';
 }
 
@@ -59,7 +51,11 @@ function create_cookie_banner_page() {
 }
 add_action('after_switch_theme', 'create_cookie_banner_page');
 
-// Register block styles for full-height sections
+function enqueue_cookie_banner_script() {
+    wp_enqueue_script('cookie-banner', get_template_directory_uri() . '/js/cookie-banner.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_cookie_banner_script');
+
 function register_block_styles() {
     register_block_style(
         'core/group',
@@ -71,8 +67,53 @@ function register_block_styles() {
 }
 add_action('init', 'register_block_styles');
 
-// Check for full-height sections and add necessary body class
-function check_for_full_height_sections($content) {
+// Add custom class to body when page uses scroll snap
+function add_scroll_snap_body_class($classes) {
+    if (is_page()) {
+        $post = get_post();
+        if (has_blocks($post->post_content)) {
+            $blocks = parse_blocks($post->post_content);
+            foreach ($blocks as $block) {
+                if ($block['blockName'] === 'core/group' && 
+                    isset($block['attrs']['className']) && 
+                    strpos($block['attrs']['className'], 'is-style-full-height-section') !== false) {
+                    $classes[] = 'has-scroll-snap';
+                    break;
+                }
+            }
+        }
+    }
+    return $classes;
+}
+add_filter('body_class', 'add_scroll_snap_body_class');
+
+// Enqueue styles for scroll snap
+function enqueue_scroll_snap_styles() {
+    wp_enqueue_style(
+        'scroll-snap-styles',
+        get_template_directory_uri() . '/css/scroll-snap.css',
+        array(),
+        '1.0.0'
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_styles');
+
+// Add this to functions.php
+function enqueue_scroll_snap_script() {
+    if (is_page()) {
+        wp_enqueue_script(
+            'scroll-snap-script',
+            get_template_directory_uri() . '/js/scroll-snap.js',
+            array(),
+            '1.0.0',
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_scroll_snap_script');
+
+
+function modify_content_for_scroll_snap($content) {
     if (is_page() && has_blocks($content)) {
         $blocks = parse_blocks($content);
         $has_full_height_section = false;
@@ -94,9 +135,14 @@ function check_for_full_height_sections($content) {
     }
     return $content;
 }
-add_filter('the_content', 'check_for_full_height_sections', 1);
+add_filter('the_content', 'modify_content_for_scroll_snap', 1);
 
-function enqueue_cookie_banner_script() {
-    wp_enqueue_script('cookie-banner', get_template_directory_uri() . '/js/cookie-banner.js', array('jquery'), null, true);
+// Ensure proper script loading order
+function adjust_script_priority() {
+    // Remove existing script
+    remove_action('wp_enqueue_scripts', 'figueira_digital_scripts');
+    
+    // Re-add with later priority
+    add_action('wp_enqueue_scripts', 'figueira_digital_scripts', 20);
 }
-add_action('wp_enqueue_scripts', 'enqueue_cookie_banner_script');
+add_action('init', 'adjust_script_priority');
