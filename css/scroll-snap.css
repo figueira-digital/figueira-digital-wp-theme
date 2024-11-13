@@ -45,7 +45,7 @@
 
 /* Content container for full height sections */
 .has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
-    max-width: 1200px;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -55,7 +55,7 @@
 
 /* Regular group content container */
 .has-scroll-snap .wp-block-group > .wp-block-group__inner-container {
-    max-width: 1200px;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
 }
