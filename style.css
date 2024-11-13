@@ -117,6 +117,7 @@ body {
     color: #fff;
     padding: 1%;
     width: 100%;
+    max-width: 80%;
     margin: 0 auto;
     margin-bottom: 10%;
 }
