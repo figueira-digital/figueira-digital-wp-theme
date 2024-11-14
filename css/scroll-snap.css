@@ -118,6 +118,6 @@
     }
     
     .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
-        bottom: 20vh; /* Adjust snap point for mobile */
+        bottom: 30vh; /* Adjust snap point for mobile */
     }
 }
