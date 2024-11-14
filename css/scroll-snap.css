@@ -43,14 +43,14 @@
     overflow-y: auto;
     /* Add padding wrapper for snap effect */
     position: relative;
-    padding-bottom: 25vh; /* Add 25% viewport height padding at bottom */
+    padding-bottom: 10vh; /* Add 25% viewport height padding at bottom */
 }
 
 /* Add pseudo-element for snap point */
 .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
     content: '';
     position: absolute;
-    bottom: 15vh; /* Position snap point 15% from bottom */
+    bottom: 10vh; /* Position snap point 15% from bottom */
     left: 0;
     right: 0;
     height: 1px;
@@ -69,7 +69,7 @@
 
 /* Last section special handling */
 .has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
-    padding-bottom: calc(25vh + 40px); /* Account for footer */
+    padding-bottom: calc(10vh + 40px); /* Account for footer */
 }
 
 /* Fixed header */
@@ -123,6 +123,6 @@
     }
     
     .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
-        bottom: 20vh; /* Adjust snap point for mobile */
+        bottom: 10vh; /* Adjust snap point for mobile */
     }
 }
