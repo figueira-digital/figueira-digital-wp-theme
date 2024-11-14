@@ -41,7 +41,8 @@
     margin: 0;
     box-sizing: border-box;
     overflow-y: auto; /* Allow scrolling within sections if needed */
-    padding-bottom: 10vh;
+    position: relative;
+    padding-bottom: 20vh;
 }
 
 /* Content container for full height sections */
@@ -108,10 +109,15 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .has-scroll-snap #snap-container {
-        padding-top: 80px; /* Larger header height for mobile */
+        padding-top: 80px;
     }
     
     .has-scroll-snap .wp-block-group.is-style-full-height-section {
-        padding: 80px 5% 5% 5%; /* Additional top padding for mobile */
+        padding-top: 80px;
+        padding-bottom: 30vh; /* Slightly more padding on mobile */
+    }
+    
+    .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
+        bottom: 20vh; /* Adjust snap point for mobile */
     }
 }
