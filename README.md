@@ -1,6 +1,6 @@
 # Figueira Digital WordPress Theme
 
-A modern, responsive WordPress theme with a dynamic background effect, clean design, and a customizable cookie banner.
+A modern, responsive WordPress theme with a dynamic background effect, clean design, and a customizable cookie banner. Currently in use on https://figueira.digital
 
 ![Figueira Digital Theme Preview](images/theme-preview.png)
 
