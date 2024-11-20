@@ -399,6 +399,65 @@ body.cookie-banner-visible::before {
     text-decoration: none;
 }
 
+/* Workshop form styles */
+.workshop-registration table {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.workshop-registration input[type="text"],
+.workshop-registration input[type="email"],
+.workshop-registration input[type="date"],
+.workshop-registration textarea {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    color: #333;
+}
+
+.workshop-registration input[type="submit"] {
+    background-color: #4CAF50;
+    transition: background-color 0.3s ease;
+}
+
+.workshop-registration input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.workshop-registration label {
+    color: #fff;
+}
+
+/* Required field indicator */
+.workshop-registration span.required {
+    color: #ff4444;
+}
+
+/* Form input focus states */
+.workshop-registration input:focus,
+.workshop-registration textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+}
+
+/* Date input specific styles for better visibility */
+.workshop-registration input[type="date"] {
+    padding-right: 10px;
+}
+
+.workshop-registration input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+/* Message textarea specific styles */
+.workshop-registration textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
+}
+
 @media (max-width: 768px) {
     .workshop-grid {
         grid-template-columns: 1fr;
