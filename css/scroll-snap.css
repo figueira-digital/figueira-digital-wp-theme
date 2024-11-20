@@ -35,30 +35,31 @@
     min-height: 100vh;
     scroll-snap-align: start;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5% 5% calc(5% + 200px); /* Added fixed padding at bottom */
+    flex-direction: column; /* Added to ensure proper content flow */
+    justify-content: center; /* Center content vertically */
+    padding: 5% 5%;
     margin: 0;
     box-sizing: border-box;
+    overflow-y: auto; /* Allow scrolling within sections if needed */
     position: relative;
+    padding-bottom: 20vh;
 }
 
-/* Make the content wrapper take up available space */
+/* Content container for full height sections */
 .has-scroll-snap .is-style-full-height-section > .wp-block-group__inner-container {
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* Remove any fixed height constraints */
+    min-height: 0;
 }
 
-/* Special handling for the last section */
-.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
-    min-height: calc(100vh + 300px); /* Ensure extra space for last section */
-    padding-bottom: 300px; /* Large bottom padding for last section */
+/* Regular group content container */
+.has-scroll-snap .wp-block-group > .wp-block-group__inner-container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* Fixed header */
@@ -100,6 +101,11 @@
     z-index: -1;
 }
 
+/* Add padding for better visibility near the footer */
+.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
+    padding-bottom: calc(5% + 40px); /* Additional padding to account for footer */
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .has-scroll-snap #snap-container {
@@ -107,11 +113,11 @@
     }
     
     .has-scroll-snap .wp-block-group.is-style-full-height-section {
-        padding: 80px 5% 30vh;
+        padding-top: 80px;
+        padding-bottom: 30vh; /* Slightly more padding on mobile */
     }
     
-    .has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
-        min-height: calc(100vh + 40vh);
-        padding-bottom: 40vh;
+    .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
+        bottom: 30vh; /* Adjust snap point for mobile */
     }
 }
