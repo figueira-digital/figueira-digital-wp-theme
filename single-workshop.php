@@ -66,7 +66,7 @@
                                             <form id="WebToLeadForm" action="https://crm.figueira.digital/index.php?entryPoint=WebToPersonCapture" method="POST" name="WebToLeadForm">
                                                 <tr>
                                                     <td style="padding: 15px;">
-                                                        <label for="first_name">First Name:</label>
+                                                        <label for="first_name">First Name: <span style="color: #ff4444;">*</span></label>
                                                     </td>
                                                     <td style="padding: 15px;">
                                                         <input name="first_name" id="first_name" type="text" required style="width: 100%; font-size: 18px; padding: 8px;">
@@ -82,7 +82,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="padding: 15px;">
-                                                        <label for="phone_mobile">Mobile:</label>
+                                                        <label for="phone_mobile">Mobile: <span style="color: #ff4444;">*</span></label>
                                                     </td>
                                                     <td style="padding: 15px;">
                                                         <input name="phone_mobile" id="phone_mobile" type="text" required style="width: 100%; font-size: 18px; padding: 8px;">
@@ -98,7 +98,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="padding: 15px;">
-                                                        <label for="birthdate">Birthdate:</label>
+                                                        <label for="birthdate">Birthdate: <span style="color: #ff4444;">*</span></label>
                                                     </td>
                                                     <td style="padding: 15px;">
                                                         <input name="birthdate" id="birthdate" type="date" required style="width: 100%; font-size: 18px; padding: 8px;">
@@ -106,7 +106,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="padding: 15px;">
-                                                        <label for="primary_address_street">Address:</label>
+                                                        <label for="primary_address_street">Address: <span style="color: #ff4444;">*</span></label>
                                                     </td>
                                                     <td style="padding: 15px;">
                                                         <input name="primary_address_street" id="primary_address_street" required type="text" style="width: 100%; font-size: 18px; padding: 8px;">
@@ -114,15 +114,10 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="padding: 15px;">
-                                                        <label for="primary_address_city">City:</label>
+                                                        <label for="primary_address_city">City: <span style="color: #ff4444;">*</span></label>
                                                     </td>
                                                     <td style="padding: 15px;">
                                                         <input name="primary_address_city" id="primary_address_city" type="text" required style="width: 100%; font-size: 18px; padding: 8px;">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="padding: 15px;">
-                                                        <label for="lead_source_description">Message:</label>
                                                     </td>
                                                 </tr>
                                                 <tr>
