@@ -69,7 +69,7 @@
                                                         <label for="first_name">First Name:</label>
                                                     </td>
                                                     <td style="padding: 15px;">
-                                                        <input name="first_name" id="first_name" type="text" style="width: 100%; font-size: 18px; padding: 8px;">
+                                                        <input name="first_name" id="first_name" type="text" required style="width: 100%; font-size: 18px; padding: 8px;">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -85,7 +85,7 @@
                                                         <label for="phone_mobile">Mobile:</label>
                                                     </td>
                                                     <td style="padding: 15px;">
-                                                        <input name="phone_mobile" id="phone_mobile" type="text" style="width: 100%; font-size: 18px; padding: 8px;">
+                                                        <input name="phone_mobile" id="phone_mobile" type="text" required style="width: 100%; font-size: 18px; padding: 8px;">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -101,7 +101,7 @@
                                                         <label for="birthdate">Birthdate:</label>
                                                     </td>
                                                     <td style="padding: 15px;">
-                                                        <input name="birthdate" id="birthdate" type="date" style="width: 100%; font-size: 18px; padding: 8px;">
+                                                        <input name="birthdate" id="birthdate" type="date" required style="width: 100%; font-size: 18px; padding: 8px;">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -109,7 +109,7 @@
                                                         <label for="primary_address_street">Address:</label>
                                                     </td>
                                                     <td style="padding: 15px;">
-                                                        <input name="primary_address_street" id="primary_address_street" type="text" style="width: 100%; font-size: 18px; padding: 8px;">
+                                                        <input name="primary_address_street" id="primary_address_street" required type="text" style="width: 100%; font-size: 18px; padding: 8px;">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -117,15 +117,12 @@
                                                         <label for="primary_address_city">City:</label>
                                                     </td>
                                                     <td style="padding: 15px;">
-                                                        <input name="primary_address_city" id="primary_address_city" type="text" style="width: 100%; font-size: 18px; padding: 8px;">
+                                                        <input name="primary_address_city" id="primary_address_city" type="text" required style="width: 100%; font-size: 18px; padding: 8px;">
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="padding: 15px;">
                                                         <label for="lead_source_description">Message:</label>
-                                                    </td>
-                                                    <td style="padding: 15px;">
-                                                        <textarea name="lead_source_description" cols="100" rows="100" id="lead_source_description" style="width: 100%; height: 120px; font-size: 18px; padding: 8px;"></textarea>
                                                     </td>
                                                 </tr>
                                                 <tr>
