@@ -19,7 +19,7 @@
 .has-scroll-snap #snap-container {
     height: 100vh;
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity; /* Changed from mandatory to proximity for smoother scrolling */
     padding-top: 60px; /* Header height */
 }
 
@@ -34,15 +34,21 @@
 .has-scroll-snap .wp-block-group.is-style-full-height-section {
     min-height: 100vh;
     scroll-snap-align: start;
+    scroll-snap-stop: always; /* Ensures consistent snapping behavior */
     display: flex;
-    flex-direction: column; /* Added to ensure proper content flow */
-    justify-content: center; /* Center content vertically */
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from center to flex-start */
     padding: 5% 5%;
     margin: 0;
     box-sizing: border-box;
-    overflow-y: auto; /* Allow scrolling within sections if needed */
     position: relative;
-    padding-bottom: 20vh;
+}
+
+/* Special handling for the last full-height section */
+.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
+    min-height: calc(100vh + 20vh); /* Add extra space at the bottom */
+    padding-bottom: 25vh; /* Increased padding at bottom */
+    margin-bottom: 5vh; /* Add margin to ensure scrollability */
 }
 
 /* Content container for full height sections */
@@ -51,8 +57,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 20px;
-    /* Remove any fixed height constraints */
-    min-height: 0;
+    height: auto; /* Allow content to determine height */
 }
 
 /* Regular group content container */
@@ -101,11 +106,6 @@
     z-index: -1;
 }
 
-/* Add padding for better visibility near the footer */
-.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
-    padding-bottom: calc(5% + 40px); /* Additional padding to account for footer */
-}
-
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .has-scroll-snap #snap-container {
@@ -114,10 +114,11 @@
     
     .has-scroll-snap .wp-block-group.is-style-full-height-section {
         padding-top: 80px;
-        padding-bottom: 30vh; /* Slightly more padding on mobile */
     }
     
-    .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
-        bottom: 30vh; /* Adjust snap point for mobile */
+    .has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
+        min-height: calc(100vh + 25vh); /* Even more space on mobile */
+        padding-bottom: 30vh;
+        margin-bottom: 10vh;
     }
 }
