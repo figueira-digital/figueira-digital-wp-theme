@@ -273,3 +273,134 @@ body.cookie-banner-visible::before {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9998;
 }
+/* Workshop specific styles */
+.workshop-image {
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+.workshop-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.workshop-meta {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 1em 0 2em;
+}
+
+.workshop-meta > div {
+    margin-bottom: 0.5em;
+}
+
+.workshop-meta > div:last-child {
+    margin-bottom: 0;
+}
+
+.workshop-skills,
+.workshop-requirements {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5em;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.workshop-skills h2,
+.workshop-requirements h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.workshop-registration {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.registration-button {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 1em 2em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.registration-button:hover {
+    background: #45a049;
+    text-decoration: none;
+    color: white;
+}
+
+/* Workshop archive/listing styles */
+.workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 2em 0;
+}
+
+.workshop-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.workshop-card:hover {
+    transform: translateY(-5px);
+}
+
+.workshop-card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.workshop-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.workshop-card-content {
+    padding: 1.5em;
+}
+
+.workshop-card-title {
+    margin: 0 0 1em;
+    font-size: 1.3em;
+}
+
+.workshop-card-meta {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+.workshop-card-link {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.workshop-card-link:hover {
+    background: #45a049;
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .workshop-grid {
+        grid-template-columns: 1fr;
+    }
+}
