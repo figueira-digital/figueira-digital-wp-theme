@@ -19,7 +19,7 @@
 .has-scroll-snap #snap-container {
     height: 100vh;
     overflow-y: auto;
-    scroll-snap-type: y proximity; /* Changed from mandatory to proximity for smoother scrolling */
+    scroll-snap-type: y mandatory;
     padding-top: 60px; /* Header height */
 }
 
@@ -34,21 +34,25 @@
 .has-scroll-snap .wp-block-group.is-style-full-height-section {
     min-height: 100vh;
     scroll-snap-align: start;
-    scroll-snap-stop: always; /* Ensures consistent snapping behavior */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Changed from center to flex-start */
+    justify-content: center; /* Keep content vertically centered */
     padding: 5% 5%;
     margin: 0;
     box-sizing: border-box;
+    overflow-y: auto;
     position: relative;
 }
 
-/* Special handling for the last full-height section */
-.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
-    min-height: calc(100vh + 20vh); /* Add extra space at the bottom */
-    padding-bottom: 25vh; /* Increased padding at bottom */
-    margin-bottom: 5vh; /* Add margin to ensure scrollability */
+/* Add extra scroll space after each section */
+.has-scroll-snap .wp-block-group.is-style-full-height-section::after {
+    content: '';
+    display: block;
+    height: 25vh; /* Add extra scroll space */
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    pointer-events: none; /* Ensures it doesn't interfere with content */
 }
 
 /* Content container for full height sections */
@@ -57,7 +61,8 @@
     width: 100%;
     margin: 0 auto;
     padding: 20px;
-    height: auto; /* Allow content to determine height */
+    /* Remove any fixed height constraints */
+    min-height: 0;
 }
 
 /* Regular group content container */
@@ -106,6 +111,11 @@
     z-index: -1;
 }
 
+/* Special handling for last section to ensure proper spacing at bottom */
+.has-scroll-snap .wp-block-group.is-style-full-height-section:last-child::after {
+    height: 35vh; /* Extra space for last section */
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .has-scroll-snap #snap-container {
@@ -115,10 +125,12 @@
     .has-scroll-snap .wp-block-group.is-style-full-height-section {
         padding-top: 80px;
     }
+
+    .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
+        height: 30vh; /* More space on mobile */
+    }
     
-    .has-scroll-snap .wp-block-group.is-style-full-height-section:last-child {
-        min-height: calc(100vh + 25vh); /* Even more space on mobile */
-        padding-bottom: 30vh;
-        margin-bottom: 10vh;
+    .has-scroll-snap .wp-block-group.is-style-full-height-section:last-child::after {
+        height: 40vh; /* Even more space for last section on mobile */
     }
 }
