@@ -32,8 +32,8 @@
 
 /* Full height section styling */
 .has-scroll-snap .wp-block-group.is-style-full-height-section {
-    min-height: 100vh;
-    max-height: 100vh;
+    min-height: 80vh;
+    max-height: 80vh;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column; /* Added to ensure proper content flow */
