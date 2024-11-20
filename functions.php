@@ -146,3 +146,49 @@ function adjust_script_priority() {
     add_action('wp_enqueue_scripts', 'figueira_digital_scripts', 20);
 }
 add_action('init', 'adjust_script_priority');
+
+
+function register_workshop_post_type() {
+    $labels = array(
+        'name'                  => 'Workshops',
+        'singular_name'         => 'Workshop',
+        'menu_name'            => 'Workshops',
+        'add_new'              => 'Add New Workshop',
+        'add_new_item'         => 'Add New Workshop',
+        'edit_item'            => 'Edit Workshop',
+        'new_item'             => 'New Workshop',
+        'view_item'            => 'View Workshop',
+        'search_items'         => 'Search Workshops',
+        'not_found'            => 'No workshops found',
+        'not_found_in_trash'   => 'No workshops found in trash',
+        'all_items'            => 'All Workshops',
+        'archives'             => 'Workshop Archives'
+    );
+
+    $args = array(
+        'labels'              => $labels,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_nav_menus'   => true,
+        'show_in_admin_bar'   => true,
+        'show_in_rest'        => true, // Enable Gutenberg editor
+        'menu_position'       => 5,
+        'menu_icon'           => 'dashicons-calendar-alt',
+        'hierarchical'        => false,
+        'supports'            => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'has_archive'         => true,
+        'rewrite'             => array('slug' => 'workshops'),
+        'publicly_queryable'  => true
+    );
+
+    register_post_type('workshop', $args);
+}
+add_action('init', 'register_workshop_post_type');
+
+// Flush rewrite rules on theme activation
+function workshop_rewrite_flush() {
+    register_workshop_post_type();
+    flush_rewrite_rules();
+}
+add_action('after_switch_theme', 'workshop_rewrite_flush');
