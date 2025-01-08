@@ -38,15 +38,35 @@ function create_footer_page() {
 add_action('after_switch_theme', 'create_footer_page');
 
 function create_cookie_banner_page() {
-    if (!get_page_by_path('cookie-banner-content')) {
-        wp_insert_post(array(
-            'post_title'    => 'Cookie Banner Content',
-            'post_content'  => 'We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.',
-            'post_status'   => 'publish',
-            'post_author'   => 1,
-            'post_type'     => 'page',
-            'post_name'     => 'cookie-banner-content'
-        ));
+    // Only proceed if Polylang is active
+    if (function_exists('pll_languages_list')) {
+        $languages = pll_languages_list();
+        
+        foreach ($languages as $lang) {
+            $page_title = $lang === 'en' ? 'Cookie Banner Content' : 'Cookie Banner Content ' . strtoupper($lang);
+            $content = $lang === 'en' 
+                ? 'We use cookies to improve your experience on our website. By browsing this website, you agree to our use of cookies.'
+                : ''; // Leave blank for manual translation
+            
+            // Check if the page exists in this language
+            $page = get_page_by_path('cookie-banner-content-' . $lang);
+            
+            if (!$page) {
+                $page_id = wp_insert_post(array(
+                    'post_title'    => $page_title,
+                    'post_content'  => $content,
+                    'post_status'   => 'publish',
+                    'post_author'   => 1,
+                    'post_type'     => 'page',
+                    'post_name'     => 'cookie-banner-content-' . $lang
+                ));
+                
+                // Set the language for the new page
+                if (function_exists('pll_set_post_language')) {
+                    pll_set_post_language($page_id, $lang);
+                }
+            }
+        }
     }
 }
 add_action('after_switch_theme', 'create_cookie_banner_page');
@@ -192,3 +212,11 @@ function workshop_rewrite_flush() {
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'workshop_rewrite_flush');
+
+// Add this to your functions.php
+function register_cookie_strings() {
+    if (function_exists('pll_register_string')) {
+        pll_register_string('cookie-accept', 'Accept', 'Cookie Banner');
+    }
+}
+add_action('init', 'register_cookie_strings');
