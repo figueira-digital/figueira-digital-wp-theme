@@ -19,7 +19,7 @@
 .has-scroll-snap #snap-container {
     height: 100vh;
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
+    /*scroll-snap-type: y mandatory;*/
     padding-top: 60px; /* Header height */
 }
 
