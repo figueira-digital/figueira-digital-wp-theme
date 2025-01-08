@@ -23,7 +23,7 @@
     padding-top: 60px; /* Header height */
 }
 
-.wp-block-group .is-style-full-height-section {
+.wp-block-group.is-style-full-height-section {
     background: rgba(0,0,0,0.5);    
 }
 /* Regular group blocks behavior */
