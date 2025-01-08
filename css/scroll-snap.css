@@ -24,8 +24,8 @@
 }
 
 .wp-block-group__inner-container.is-layout-constrained.wp-block-group-is-layout-constrained {
-    background-clip: content-box;
-    background-color: rgba(0,0,0,0.5);    
+    /*background-clip: content-box;*/
+    background: rgba(0,0,0,0.5);    
 }
 /* Regular group blocks behavior */
 .has-scroll-snap .wp-block-group {
