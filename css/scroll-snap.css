@@ -117,10 +117,6 @@
     
     .has-scroll-snap .wp-block-group.is-style-full-height-section {
         padding-top: 80px;
-        padding-bottom: 30vh; /* Slightly more padding on mobile */
     }
-    
-    .has-scroll-snap .wp-block-group.is-style-full-height-section::after {
-        bottom: 30vh; /* Adjust snap point for mobile */
-    }
+
 }
