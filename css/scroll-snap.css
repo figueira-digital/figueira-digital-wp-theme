@@ -23,7 +23,7 @@
     padding-top: 60px; /* Header height */
 }
 
-.wp-block-group.is-style-full-height-section {
+.wp-block-group__inner-container.is-layout-constrained.wp-block-group-is-layout-constrained {
     background-clip: content-box;
     background-color: rgba(0,0,0,0.5);    
 }
