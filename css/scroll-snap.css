@@ -25,7 +25,7 @@
 
 .wp-block-group.is-style-full-height-section {
     background-clip: content-box;
-    background: rgba(0,0,0,0.5);    
+    background-color: rgba(0,0,0,0.5);    
 }
 /* Regular group blocks behavior */
 .has-scroll-snap .wp-block-group {
