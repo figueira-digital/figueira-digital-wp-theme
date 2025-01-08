@@ -25,6 +25,7 @@
 
 /* Regular group blocks behavior */
 .has-scroll-snap .wp-block-group {
+    background: rgba(0,0,0,0.5);    
     box-sizing: border-box;
     margin: 0;
 }
