@@ -1,4 +1,3 @@
-/* Reset some default styles */
 * {
     font-family: monospace;
     box-sizing: border-box;
@@ -13,12 +12,10 @@ body {
     flex-direction: column;
 }
 
-/* Veil effect */
 #veil {
     display: none;
 }
 
-/* Ensure other elements are above the veil */
 #masthead, .site-branding, .site-content {
     position: relative;
     z-index: 10;
@@ -38,10 +35,9 @@ body {
     flex-grow: 1;
     display: flex;
     align-items: center;
-    padding: 60px 5% 0; /* Adjusted top padding to account for fixed header */
+    padding: 60px 5% 0;
 }
 
-/* Updated navigation and branding styling */
 #masthead {
     position: fixed;
     top: 0;
@@ -53,6 +49,17 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 5%;
+}
+
+.has-x-large-font-size{
+	margin: 0;	
+}
+
+:root {
+	--wp--preset--font-size--small: 20px;
+	--wp--preset--font-size--medium: 30px;
+ 	--wp--preset--font-size--large: 40px;
+	--wp--preset--font-size--x-large: 70px;
 }
 
 .site-branding {
@@ -68,6 +75,7 @@ body {
 
 .brand-top, .brand-bottom {
     position: relative;
+	font-size: var(--wp--preset--font-size--small) !important;
 }
 
 .brand-bottom {
@@ -101,6 +109,7 @@ body {
     color: #ffffff;
     text-decoration: none;
     transition: font-weight 0.3s ease;
+	font-size: var(--wp--preset--font-size--small) !important;
 }
 
 .site-branding a:hover,
@@ -109,10 +118,9 @@ body {
 }
 
 .site-description {
-    display: none; /* Hide the site description as it doesn't fit in the navbar */
+    display: none;
 }
 
-/* Content styling */
 #content, .entry-content {
     color: #fff;
     padding: 1%;
@@ -122,7 +130,6 @@ body {
     margin-bottom: 10%;
 }
 
-/* Entry content specific styling */
 .entry-content h1, .entry-content h2, .entry-content h3,
 .entry-content h4, .entry-content h5, .entry-content h6 {
     color: #fff;
@@ -134,14 +141,13 @@ body {
     line-height: 1.6;
 }
 
-/*.entry-content */a {
+a {
     color: #fff;
     text-decoration: underline;
     transition: font-weight 0.3s ease;
-    /*font-size: x-large;*/
 }
 
-/*.entry-content */a:hover {
+a:hover {
     font-weight: bold;
 }
 
@@ -156,7 +162,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Footer styling */
 .site-footer {
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
@@ -171,12 +176,6 @@ body {
     z-index: 1000;
 }
 
-.site-footer:hover {
-    height: auto;
-    max-height: 50%;
-    overflow-y: auto;
-}
-
 .footer-content {
     padding: 10px;
 }
@@ -185,24 +184,9 @@ body {
     margin: 0;
 }
 
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-    .brand-wrapper {
-        font-size: 150%;
-    }
-
-    .main-navigation a {
-        font-size: 120%;
-    }
-
-    #content, .entry-content {
-        font-size: 150%;
-    }
-}
-
 /* Blog post title styles */
 .entry-title {
-    font-size: 2.5em;
+    font-size: 30px;
     margin-bottom: 20px;
     color: #fff;
 }
@@ -273,15 +257,77 @@ body.cookie-banner-visible::before {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9998;
 }
-/* Workshop specific styles */
+
+.workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 2em 0;
+}
+
+.workshop-card {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.workshop-card:hover {
+    transform: translateY(-5px);
+}
+
+.workshop-card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.workshop-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.workshop-card-content {
+    padding: 1.5em;
+}
+
+.workshop-card-title {
+    margin: 0 0 1em;
+    font-size: 1.3em;
+}
+
+.workshop-card-meta {
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+.workshop-card-link {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.workshop-card-link:hover {
+    background: #45a049;
+    color: white;
+    text-decoration: none;
+}
+
+
 .workshop-image {
     margin-bottom: 2em;
-    width: 100%;
 }
 
 .workshop-image img {
-    width: 100%;
-    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -316,7 +362,6 @@ body.cookie-banner-visible::before {
     margin-bottom: 1em;
 }
 
-/* Workshop form responsive styles */
 .workshop-registration {
     width: 100%;
     max-width: 600px;
@@ -361,7 +406,6 @@ body.cookie-banner-visible::before {
     background: rgba(255, 255, 255, 0.9);
 }
 
-/* Adjust submit button container */
 .workshop-registration tr:last-child td {
     padding: 15px;
 }
@@ -379,9 +423,28 @@ body.cookie-banner-visible::before {
     cursor: pointer;
 }
 
-/* Media queries for larger screens */
+#snap-container {
+    overflow-y: auto;
+    padding-top: 60px; 
+}
+.wp-block-group.is-style-full-height-section {
+    background-clip: content-box;
+    background-color: rgba(0,0,0,0.5);   
+	border-radius: 50px;
+}
+
+.wp-block-group__inner-container.is-layout-constrained.wp-block-group-is-layout-constrained {
+	padding: 5% 5% 5% 5%;	
+	margin-bottom: 5%;
+}
+
+.wp-block-group > .wp-block-group > .wp-block-group__inner-container.is-layout-constrained.wp-block-group-is-layout-constrained {
+	margin: 0;
+	padding: 0;
+}
+
 @media (min-width: 768px) {
-    .workshop-registration tr {
+	.workshop-registration tr {
         flex-direction: row;
         align-items: center;
     }
@@ -397,10 +460,7 @@ body.cookie-banner-visible::before {
     .workshop-registration label {
         margin-bottom: 0;
     }
-}
-
-/* Improve form field spacing on very small screens */
-@media (max-width: 400px) {
+	
     .workshop-registration td {
         padding: 6px 10px;
     }
@@ -409,4 +469,21 @@ body.cookie-banner-visible::before {
     .workshop-registration input {
         font-size: 14px;
     }
+}
+
+@media (max-width: 768px) {
+	.workshop-image img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+	:root {
+		--wp--preset--font-size--small: 15px;
+		--wp--preset--font-size--medium: 24px;
+		--wp--preset--font-size--large: 30px;
+		--wp--preset--font-size--x-large: 45px;
+	}
 }

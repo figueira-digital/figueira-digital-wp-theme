@@ -27,7 +27,7 @@
         }
         ?>
     </div>
-    <button id="accept-cookies"><?php echo function_exists('pll__') ? pll__('Accept') : 'Accept'; ?></button>
+    <button class="wp-block-button__link has-background wp-element-button" id="accept-cookies" style="background:linear-gradient(90deg, rgba(116,72,174,1) 0%, rgba(236,43,128,1) 100%); border: none; outline:none; text-decoration: underline;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight='normal'"><?php echo function_exists('pll__') ? pll__('Accept') : 'Accept'; ?></button>
 </div>
 <?php wp_footer(); ?>
 </body>
