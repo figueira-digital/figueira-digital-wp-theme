@@ -1,5 +1,9 @@
 <?php get_header(); ?>
-
+<style>
+.altcha-widget-wrap {
+    display: inline-block;
+}
+</style>
 <main id="primary" class="site-main">
     <div id="container">
         <div id="content">
@@ -120,10 +124,12 @@
                                                         <input name="primary_address_city" id="primary_address_city" type="text" required style="width: 100%; padding: 8px;" class="has-small-font-size">
                                                     </td>
                                                 </tr>
+												<tr><td colspan=2 style="text-align: center;"><div class="altcha-widget-wrap">
+													 <altcha-widget challengeurl="https://figueira.digital/wp-json/altcha/v1/challenge"></altcha-widget></div> </td> </tr>
                                                 <tr>
                                                     <td colspan="2" style="padding: 15px; text-align: center;">
 <div class="wp-block-button">
-                    <input type="submit" value="[Submit →]" class="wp-block-button__link has-background wp-element-button has-small-font-size" style="background:linear-gradient(90deg, rgba(116,72,174,1) 0%, rgba(236,43,128,1) 100%); border: none; outline:none; text-decoration: underline;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight='normal'">
+                    <input disabled type="submit" value="[Submit →]" id="submit" class="wp-block-button__link has-background wp-element-button has-small-font-size" style="background:linear-gradient(90deg, rgba(116,72,174,1) 0%, rgba(236,43,128,1) 100%); border: none; outline:none; text-decoration: underline;" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight='normal'">
                 </div>                                                    </td>
                                                 </tr>
                                                 
@@ -147,5 +153,15 @@
         </div>
     </div>
 </main>
-
+<script>
+window.onload = function() {
+document.querySelector('altcha-widget').addEventListener('statechange', (ev) => {
+  // state can be: unverified, verifying, verified, error
+  console.log('state:', ev.detail.state);
+  if (ev.detail.state === 'verified') {
+    document.getElementById("submit").disabled= false;
+  }
+});
+};
+</script>
 <?php get_footer(); ?>
